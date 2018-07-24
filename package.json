@@ -1,0 +1,24 @@
+{
+  "name": "@apitax/api-client",
+  "version": "0.0.1",
+  "description": "A micro library used for quickly utilizing the Apitax API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apitax",
+    "api",
+    "automation",
+    "commandtax",
+    "scriptax",
+    "rest",
+    "ful",
+    "restful"
+  ],
+  "author": "Shawn Clake",
+  "license": "ISC",
+  "dependencies": {
+    "vue-axios": "^2.1.2"
+  }
+}
