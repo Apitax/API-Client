@@ -1,22 +1,34 @@
 import axios from 'axios';
 
-let BASE_URL = '/apitax/2/';
-let SYSTEM_URL = BASE_URL + 'system/status';
-let CATALOG_URL = BASE_URL + 'system/catalog';
-let SCRIPTS_URL = BASE_URL + 'system/script';
-let API_URL = BASE_URL + 'command';
-let AUTH_URL = BASE_URL + 'auth';
+var BASE_URL = '/apitax/2/';
+var SYSTEM_URL = BASE_URL + 'system/status';
+var CATALOG_URL = BASE_URL + 'system/catalog';
+var SCRIPTS_URL = BASE_URL + 'system/script';
+var API_URL = BASE_URL + 'command';
+var AUTH_URL = BASE_URL + 'auth';
+var TOKEN_REFRESH_URL = BASE_URL + 'token/refresh';
 
 var auth = {
 	'auth': false
 };
 
-export {auth, BASE_URL};
+export {auth};
+
+export function setBaseUrl(url)
+{
+	BASE_URL = url + '/apitax/2/';
+	SYSTEM_URL = BASE_URL + 'system/status';
+	CATALOG_URL = BASE_URL + 'system/catalog';
+	SCRIPTS_URL = BASE_URL + 'system/script';
+	API_URL = BASE_URL + 'command';
+	AUTH_URL = BASE_URL + 'auth';
+	TOKEN_REFRESH_URL = BASE_URL + 'token/refresh';
+}
 
 export function login(username, password, context, callback, successRedirect)
 {
 	var self = this;
-	axios.post(`/apitax/2/auth`, {
+	axios.post(AUTH_URL, {
   			"username": username,
   			"password": password,
   		})
@@ -132,7 +144,7 @@ export function renewToken(context, callback)
 		return false
 	}
 	
-	axios.post(`/apitax/2/token/refresh`, {}, config)
+	axios.post(TOKEN_REFRESH_URL, {}, config)
 			.then(response => {
           if(response.data.status == 201)
           {
